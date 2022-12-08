@@ -1,3 +1,4 @@
+from module.gag_face import GagFace
 from base.result import Result
 from module.aboutme_face import AboutMeFace
 from module.bitwarden_face import BitwardenFace
@@ -127,11 +128,19 @@ class FaceyMcFace:
            self.results.append(result.url)
         return None
 
+    async def get_9gag(self):
+        gravatar = GagFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+           self.results.append(result.url)
+        return None
+
 async def main():
 
-    obj = FaceyMcFace(None,'username')
+    obj = FaceyMcFace(None,'blue')
     print(f"Attempting to lookup {obj.username}!")
     await asyncio.gather(
+        obj.get_9gag(),
         obj.get_youtube(),
         obj.get_mastodon(),
         obj.get_tiktok(),
