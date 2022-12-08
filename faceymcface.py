@@ -17,7 +17,6 @@ from module.tiktok_face import TikTokFace
 from module.tinder_face import TinderFace
 from module.twitter_face import TwitterFace
 import asyncio
-from colorama import Fore
 
 from module.youtube_face import YoutubeFace
 
