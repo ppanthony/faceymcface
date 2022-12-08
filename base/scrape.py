@@ -8,7 +8,6 @@ import re
 class Scrape:
     def get_page(self, timeout):
         page = requests.get(self.base_url)
-        print(page.content)
         return page.content
 
     def get_image(self, selector, extract_function, timeout=5):

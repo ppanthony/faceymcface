@@ -1,3 +1,4 @@
+from module.cups_face import CupsFace
 from module.gag_face import GagFace
 from base.result import Result
 from module.aboutme_face import AboutMeFace
@@ -135,6 +136,13 @@ class FaceyMcFace:
            self.results.append(result.url)
         return None
 
+    async def get_7cups(self):
+        gravatar = CupsFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+           self.results.append(result.url)
+        return None
+
 async def main():
 
     obj = FaceyMcFace(None,'blue')
@@ -155,7 +163,8 @@ async def main():
         obj.get_github(),
         obj.get_skype(),
         obj.get_aboutme(),
-        obj.get_bitwarden()
+        obj.get_bitwarden(),
+        obj.get_7cups()
     )
     print(obj.results)
 
