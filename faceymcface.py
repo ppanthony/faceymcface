@@ -1,4 +1,5 @@
 from module.academia_edu_face import AcademiaEduFace
+from module.arduino_face import ArduinoFace
 from module.cups_face import CupsFace
 from module.gag_face import GagFace
 from base.result import Result
@@ -151,6 +152,13 @@ class FaceyMcFace:
            self.results.append(result.url)
         return None
 
+    async def get_arduino(self):
+        gravatar = ArduinoFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+           self.results.append(result.url)
+        return None
+
 async def main():
 
     obj = FaceyMcFace(None,'blue')
@@ -173,7 +181,8 @@ async def main():
         obj.get_aboutme(),
         obj.get_bitwarden(),
         obj.get_7cups(),
-        obj.get_academiaedu()
+        obj.get_academiaedu(),
+        obj.get_arduino()
     )
     print(obj.results)
 
