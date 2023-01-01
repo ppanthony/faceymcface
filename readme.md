@@ -5,6 +5,8 @@ An OSINT tool for finding username avatars, based heavily on the previous work o
 Getting started
 Pip install
 Specify user in def main
+python3 -m venv venv
+source ./venv/bin/activate
 python ./faceymcface
 
 (I know, I know decent command line arguments incoming)

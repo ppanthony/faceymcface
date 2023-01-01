@@ -16,6 +16,7 @@ from module.brave_face import BraveFace
 from module.tiktok_face import TikTokFace
 from module.tinder_face import TinderFace
 from module.twitter_face import TwitterFace
+from module.airbit_face import AirbitFace
 import asyncio
 
 from module.youtube_face import YoutubeFace
@@ -158,6 +159,13 @@ class FaceyMcFace:
            self.results.append(result.url)
         return None
 
+    async def get_airbit(self):
+        gravatar = AirbitFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+           self.results.append(result.url)
+        return None
+
 async def main():
 
     obj = FaceyMcFace(None,'blue')
@@ -181,7 +189,8 @@ async def main():
         obj.get_bitwarden(),
         obj.get_7cups(),
         obj.get_academiaedu(),
-        obj.get_arduino()
+        obj.get_arduino(),
+        obj.get_airbit()
     )
     print(obj.results)
 
