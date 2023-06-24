@@ -12,11 +12,11 @@ class Scrape:
 
     def get_image(self, selector, extract_function, timeout=5):
         try:
-             page = self.get_page(timeout)
-             soup = BeautifulSoup(page, 'html.parser')
-             element = soup.select(selector)
-             match = extract_function(element)
-             return FaceResult(status=Result.FOUND,url=match, error="")
+            page = self.get_page(timeout)
+            soup = BeautifulSoup(page, "html.parser")
+            element = soup.select(selector)
+            match = extract_function(element)
+            return FaceResult(status=Result.FOUND, url=match, error="")
 
         except Exception as e:
             return FaceResult(status=Result.ERROR, url="", error=str(e))

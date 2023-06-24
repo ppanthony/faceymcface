@@ -1,6 +1,7 @@
 from module.academia_edu_face import AcademiaEduFace
 from module.arduino_face import ArduinoFace
 from module.cups_face import CupsFace
+from module.fatsecret_face import FanslyFace
 from module.gag_face import GagFace
 from base.result import Result
 from module.aboutme_face import AboutMeFace
@@ -21,6 +22,7 @@ import asyncio
 
 from module.youtube_face import YoutubeFace
 
+
 class FaceyMcFace:
     def __init__(self, email_address, username) -> None:
         self.email_address = email_address
@@ -31,77 +33,77 @@ class FaceyMcFace:
         gravatar = GravatarFace(self.email_address)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
-    
+
     async def get_skype(self):
         gravatar = SkypeFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_aboutme(self):
         gravatar = AboutMeFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_bitwarden(self):
         gravatar = BitwardenFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_github(self):
         gravatar = GithubFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-          self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_brave(self):
         avatar = BraveFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-          self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_twitter(self):
         avatar = TwitterFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_facebook(self):
         avatar = FacebookFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-          self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_instagram(self):
         avatar = InstagramFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-          self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_imgur(self):
         avatar = ImgurFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_tinder(self):
         avatar = TinderFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_tiktok(self):
@@ -109,8 +111,8 @@ class FaceyMcFace:
         avatar = TikTokFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-           print(f"FOUND!")
-           self.results.append(result.url)
+            print(f"FOUND!")
+            self.results.append(result.url)
         return None
 
     async def get_mastodon(self):
@@ -118,57 +120,65 @@ class FaceyMcFace:
         avatar = MastodonFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-           print(f"FOUND!")
-           self.results.append(result.url)
+            print(f"FOUND!")
+            self.results.append(result.url)
         return None
-        
+
     async def get_youtube(self):
         print(f"Attempting to find Youtube data")
         avatar = YoutubeFace(self.username)
         result = avatar.get_image()
         if result.status == Result.FOUND:
-           print(f"FOUND!")
-           self.results.append(result.url)
+            print(f"FOUND!")
+            self.results.append(result.url)
         return None
 
     async def get_9gag(self):
         gravatar = GagFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_7cups(self):
         gravatar = CupsFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_academiaedu(self):
         gravatar = AcademiaEduFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_arduino(self):
         gravatar = ArduinoFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
     async def get_airbit(self):
         gravatar = AirbitFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
-           self.results.append(result.url)
+            self.results.append(result.url)
         return None
 
-async def main():
+    async def get_fatsecret(self):
+        print(f"Attempting to find Fatsecret data")
+        gravatar = FanslyFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+            self.results.append(result.url)
+        return None
 
-    obj = FaceyMcFace(None,'blue')
+
+async def main():
+    obj = FaceyMcFace(None, "blue")
     print(f"Attempting to lookup {obj.username}!")
     await asyncio.gather(
         obj.get_9gag(),
@@ -177,7 +187,7 @@ async def main():
         obj.get_tiktok(),
         obj.get_tinder(),
         obj.get_imgur(),
-        obj.get_instagram(), 
+        obj.get_instagram(),
         obj.get_facebook(),
         obj.get_aboutme(),
         obj.get_bitwarden(),
@@ -190,8 +200,10 @@ async def main():
         obj.get_7cups(),
         obj.get_academiaedu(),
         obj.get_arduino(),
-        obj.get_airbit()
+        obj.get_airbit(),
+        obj.get_fatsecret(),
     )
     print(obj.results)
+
 
 asyncio.run(main())

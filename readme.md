@@ -7,6 +7,6 @@ Pip install
 Specify user in def main
 python3 -m venv venv
 source ./venv/bin/activate
-python ./faceymcface
+python ./faceymcface.py
 
 (I know, I know decent command line arguments incoming)
