@@ -14,6 +14,7 @@ from module.imgur_face import ImgurFace
 from module.instagram_face import InstagramFace
 from module.instructables_face import InstructablesFace
 from module.mastodon_face import MastodonFace
+from module.pcpartpicker_face import PcPartPickerFace
 from module.skype_face import SkypeFace
 from module.brave_face import BraveFace
 from module.tiktok_face import TikTokFace
@@ -194,34 +195,43 @@ class FaceyMcFace:
             self.results.append(result.url)
         return None
 
+    async def get_pcpartpicker(self):
+        print(f"Attempting to find Pc Partpicker data")
+        gravatar = PcPartPickerFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+            self.results.append(result.url)
+        return None
+
 
 async def main():
     obj = FaceyMcFace(None, "blue")
     print(f"Attempting to lookup {obj.username}!")
     await asyncio.gather(
-        obj.get_9gag(),
-        obj.get_youtube(),
-        obj.get_mastodon(),
-        obj.get_tiktok(),
-        obj.get_tinder(),
-        obj.get_imgur(),
-        obj.get_instagram(),
-        obj.get_facebook(),
-        obj.get_aboutme(),
-        obj.get_bitwarden(),
-        obj.get_twitter(),
-        obj.get_brave(),
-        obj.get_github(),
-        obj.get_skype(),
-        obj.get_aboutme(),
-        obj.get_bitwarden(),
-        obj.get_7cups(),
-        obj.get_academiaedu(),
-        obj.get_arduino(),
-        obj.get_airbit(),
-        obj.get_fatsecret(),
-        obj.get_flipboard(),
-        obj.get_instructables(),
+        # obj.get_9gag(),
+        # obj.get_youtube(),
+        # obj.get_mastodon(),
+        # obj.get_tiktok(),
+        # obj.get_tinder(),
+        # obj.get_imgur(),
+        # obj.get_instagram(),
+        # obj.get_facebook(),
+        # obj.get_aboutme(),
+        # obj.get_bitwarden(),
+        # obj.get_twitter(),
+        # obj.get_brave(),
+        # obj.get_github(),
+        # obj.get_skype(),
+        # obj.get_aboutme(),
+        # obj.get_bitwarden(),
+        # obj.get_7cups(),
+        # obj.get_academiaedu(),
+        # obj.get_arduino(),
+        # obj.get_airbit(),
+        # obj.get_fatsecret(),
+        # obj.get_flipboard(),
+        # obj.get_instructables(),
+        obj.get_pcpartpicker(),
     )
     print(obj.results)
 

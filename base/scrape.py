@@ -14,7 +14,6 @@ class Scrape:
         try:
             page = self.get_page(timeout)
             soup = BeautifulSoup(page, "html.parser")
-
             element = soup.select(selector)
             match = extract_function(element)
             return FaceResult(status=Result.FOUND, url=match, error="")
