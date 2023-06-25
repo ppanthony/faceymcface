@@ -5,7 +5,6 @@ bs4==0.0.1
 certifi==2022.9.24
 cfscrape==2.1.1
 charset-normalizer==2.1.1
-chromedriver-py==108.0.5359.71
 colorama==0.4.6
 colorthief==0.2.1
 docopt==0.6.2

@@ -1,7 +1,8 @@
 from module.academia_edu_face import AcademiaEduFace
 from module.arduino_face import ArduinoFace
 from module.cups_face import CupsFace
-from module.fatsecret_face import FanslyFace
+from module.fatsecret_face import FatSecretFace
+from module.flipboard_face import FlipboardFace
 from module.gag_face import GagFace
 from base.result import Result
 from module.aboutme_face import AboutMeFace
@@ -170,7 +171,15 @@ class FaceyMcFace:
 
     async def get_fatsecret(self):
         print(f"Attempting to find Fatsecret data")
-        gravatar = FanslyFace(self.username)
+        gravatar = FatSecretFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+            self.results.append(result.url)
+        return None
+
+    async def get_flipboard(self):
+        print(f"Attempting to find Flipboard data")
+        gravatar = FlipboardFace(self.username)
         result = gravatar.get_image()
         if result.status == Result.FOUND:
             self.results.append(result.url)
@@ -202,6 +211,7 @@ async def main():
         obj.get_arduino(),
         obj.get_airbit(),
         obj.get_fatsecret(),
+        obj.get_flipboard(),
     )
     print(obj.results)
 

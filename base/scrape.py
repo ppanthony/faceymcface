@@ -14,9 +14,11 @@ class Scrape:
         try:
             page = self.get_page(timeout)
             soup = BeautifulSoup(page, "html.parser")
+
             element = soup.select(selector)
             match = extract_function(element)
             return FaceResult(status=Result.FOUND, url=match, error="")
 
         except Exception as e:
+            print(e)
             return FaceResult(status=Result.ERROR, url="", error=str(e))
