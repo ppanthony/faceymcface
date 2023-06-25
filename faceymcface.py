@@ -12,6 +12,7 @@ from module.github_face import GithubFace
 from module.gravatar_face import GravatarFace
 from module.imgur_face import ImgurFace
 from module.instagram_face import InstagramFace
+from module.instructables_face import InstructablesFace
 from module.mastodon_face import MastodonFace
 from module.skype_face import SkypeFace
 from module.brave_face import BraveFace
@@ -185,6 +186,14 @@ class FaceyMcFace:
             self.results.append(result.url)
         return None
 
+    async def get_instructables(self):
+        print(f"Attempting to find Instructables data")
+        gravatar = InstructablesFace(self.username)
+        result = gravatar.get_image()
+        if result.status == Result.FOUND:
+            self.results.append(result.url)
+        return None
+
 
 async def main():
     obj = FaceyMcFace(None, "blue")
@@ -212,6 +221,7 @@ async def main():
         obj.get_airbit(),
         obj.get_fatsecret(),
         obj.get_flipboard(),
+        obj.get_instructables(),
     )
     print(obj.results)
 
